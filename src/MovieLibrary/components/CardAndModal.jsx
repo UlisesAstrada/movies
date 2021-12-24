@@ -51,7 +51,7 @@ const CardAndModal = ({movie}) => {
             alt={movie.title}
           />
           <div className="middle">
-            <div className="text"><b>{movie.title}</b></div>
+            <div className="text"><b>{movie.title} <br /> <br /> <small>Rating: {movie.vote_average}</small></b></div>
           </div>
         </CardActionArea>
       </Card>
