@@ -28,9 +28,7 @@ export default function MoviesList ({ movies }){
           )
         }
       </div>
-    </div>)
-
-  
+    </div>) 
 }
 
 function MovieListItem ({movie}) {
