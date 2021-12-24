@@ -1,55 +1,44 @@
 import React, { useState } from 'react'
-import TMDBImage from './TMDBImage'
 import './MoviesList.css'
+
+import CardAndModal from './CardAndModal';
 
 export default function MoviesList ({ movies }){
 
-
-  const [selectedMovie, setSelectedMovie] = useState(null)
   const [sortingType, setSortingType] = useState('')
-  const handleSelectMovie = movie => setSelectedMovie(movie)
   const handleSortingChange = event => {
     setSortingType(event.target.value)
   }
 
-  return(<div className="movies-list">
-    <div className="items">
-      <div>
+  
+
+  return(
+    <div className="movies-list">
+      <div className="sorting">
         <span>Sort by:</span>
         <SortingOptions selectedOption={sortingType} onChange={handleSortingChange}/>
       </div>
-      {
-        movies.map(movie =>
-          <MovieListItem key={movie.id} movie={movie} isSelected={selectedMovie===movie} onSelect={handleSelectMovie}/>
-        )
-      }
-    </div>
-    {
-      selectedMovie && (
-        <ExpandedMovieItem movie={selectedMovie} />
-      )
-    }
-  </div>)
+      <div className="items">
+        {
+          movies.map((movie, index) =>
+            <MovieListItem 
+              key={index} 
+              movie={movie} 
+            />
+          )
+        }
+      </div>
+    </div>)
 
   
 }
 
-const ExpandedMovieItem = ({movie: {title, original_title, poster_path, overview, vote_average, vote_count}}) => (
-  <div className="expanded-movie-item">
-    <TMDBImage src={poster_path} className="poster" />
-    <div className="description">
-      <h2>{title}({original_title})</h2>
-      <div><h4>Rank(votes count)</h4>: <span>{vote_average}({vote_count})</span></div>
-      <span>{overview}</span>
+function MovieListItem ({movie}) {
+  return(
+    <div>
+      <CardAndModal movie={movie} />
     </div>
-  </div>
-)
-
-function MovieListItem ({movie, isSelected, onSelect}) {
-  const handleClick = () => onSelect(movie)
-  const { title, vote_average } = movie
-  const className = `movie-list-item ${isSelected ? 'selected' : ''}`
-  return(<div className={className} onClick={handleClick}>{title}({vote_average})</div>)
+  )
 }
 
 function SortingOptions ({ selectedOption, onChange }) {

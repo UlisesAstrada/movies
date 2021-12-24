@@ -1,25 +1,22 @@
-import React, { useEffect } from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {fetchTopRatedMovies} from '../store/actions'
-import logo from './logo.svg'
-import './MovieLibrary.css'
-import { getMovies } from '../store/selectors'
+import React, { useEffect, useState } from 'react'
 import MoviesList from './MoviesList'
+import './MovieLibrary.css'
 
 export default function MovieLibrary() {
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(fetchTopRatedMovies())
-  }, [])
-  const movies = useSelector(getMovies)
+  
+  
+  
+
+  const [movies, setMovies] = useState([]);
+  console.log(movies)
+
   return(
     <div className="MovieLibrary">
       <header className="ML-header">
-        <img src={logo} className="ML-logo" alt="logo" />
-        <h1 className="ML-title">Movies</h1>
+        <h1 className="ML-title">Movies Challenge</h1>
       </header>
       <div className="ML-intro">
-        { movies.length && <MoviesList movies={movies}/> }
+        { movies && <MoviesList movies={movies}/> }
       </div>
     </div>)
 }

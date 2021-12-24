@@ -1,32 +1,31 @@
+.sorting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+}
+
 .movies-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  width: 90%;
+  margin: 0 auto;
 }
 
-.movies-list > .items {
-  width: 20%;
-}
-
-.expanded-movie-item {
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-}
-
-.expanded-movie-item h4 {
-  display: inline;
-}
-
-.expanded-movie-item  > .description {
-  display: flex;
-  flex-direction: column;
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-content: center;
+  align-items: center;
+  gap: 100px 10px
 }
 
 .movie-list-item {
   cursor: pointer;
 }
 
-.movie-list-item.selected {
-  text-decoration: underline;
+body {
+  background-color: #141414;
+}
+
+body {
+  color: white;
 }
