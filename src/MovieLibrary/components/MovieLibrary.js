@@ -5,7 +5,24 @@ import './MovieLibrary.css'
 export default function MovieLibrary() {
   
   
-  
+  useEffect(() => {
+    async function fetchData() {
+      return Promise.all(
+        [1, 2, 3].map((page) =>
+          fetch(
+            `https://api.themoviedb.org/3/movie/now_playing?api_key=162c5ae054cfa42b00250c979618032e&language=en-US&page=${page}`
+          )
+          .then((res) => res.json())
+        )
+      )
+      .then((results) => results.flat())
+      .then(results => setMovies(results
+        .map(movie => movie.results)
+        .flat())
+      );
+    }
+    fetchData()    
+  }, [])
 
   const [movies, setMovies] = useState([]);
   console.log(movies)
