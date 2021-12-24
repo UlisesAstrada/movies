@@ -41,7 +41,7 @@ const CardAndModal = ({movie}) => {
       <Card sx={{ maxWidth: 600, backgroundColor: '#141414', color: 'white', border: '2px solid grey', borderRadius: '10px', objectFit: 'contain' }}
         onClick={ handleOpen }
       >
-        <CardActionArea>
+        <CardActionArea className='container'>
           <CardMedia
             style={{objectFit: 'contain'}}
             className='poster-image'
@@ -50,6 +50,9 @@ const CardAndModal = ({movie}) => {
             image={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
             alt={movie.title}
           />
+          <div className="middle">
+            <div className="text"><b>{movie.title}</b></div>
+          </div>
         </CardActionArea>
       </Card>
       <Modal
