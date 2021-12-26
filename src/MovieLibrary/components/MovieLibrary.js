@@ -6,6 +6,8 @@ import SearchBar from './SearchBar'
 
 export default function MovieLibrary() {
   
+
+
   
   useEffect(() => {
     async function fetchData() {
@@ -27,6 +29,7 @@ export default function MovieLibrary() {
   }, [])
 
   const [movies, setMovies] = useState([]);
+ 
 
   return(
     <div className="MovieLibrary">
@@ -35,7 +38,7 @@ export default function MovieLibrary() {
         <SearchBar movies={movies.map(movie => movie.title)} />
       </header>
       <div className="ML-intro">
-        { movies && <MoviesList movies={movies}/> }
+        { movies && <MoviesList  movies={movies}/> }
       </div>
     </div>)
 }

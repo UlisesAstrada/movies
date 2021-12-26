@@ -4,20 +4,29 @@ import './MoviesList.css'
 import CardAndModal from './CardAndModal';
 
 export default function MoviesList ({ movies }){
-
+  
   const [sortingType, setSortingType] = useState('')
   const handleSortingChange = event => {
     setSortingType(event.target.value)
   }
 
-  
+ if(sortingType === 'name_asc') {
+   movies.sort((a,b) => (a.title.toLowerCase() > b.title.toLowerCase()) ? 1 : -1)
+} 
+  else if(sortingType === 'name_desc') {
+    movies.sort((a,b) => (a.title.toLowerCase() > b.title.toLowerCase()) ? -1 : 1)
+  }
+  else if(sortingType === 'rating') {
+    movies.sort((a,b) => (a.vote_average > b.vote_average) ? -1 : 1)
+  }
 
   return(
     <div className="movies-list">
-      <div className="sorting">
+      <div>
         <span>Sort by:</span>
         <SortingOptions selectedOption={sortingType} onChange={handleSortingChange}/>
       </div>
+      
       <div className="items">
         {
           movies.map((movie, index) =>
@@ -28,7 +37,10 @@ export default function MoviesList ({ movies }){
           )
         }
       </div>
-    </div>) 
+     
+    </div>)
+
+  
 }
 
 function MovieListItem ({movie}) {
@@ -43,7 +55,7 @@ function SortingOptions ({ selectedOption, onChange }) {
 
   return (
     <select value={selectedOption} onChange={onChange}>
-      <option value=""></option>
+      <option value="default"></option>
       <option value="name_asc">A to Z</option>
       <option value="name_desc">Z to A</option>
       <option value="rating">Rating</option>
