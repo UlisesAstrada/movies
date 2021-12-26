@@ -29,16 +29,19 @@ export default function MovieLibrary() {
   }, [])
 
   const [movies, setMovies] = useState([]);
+
+  const [searchTerm, setSearchTerm] = useState('')
+  console.log(searchTerm)
  
 
   return(
     <div className="MovieLibrary">
       <header className="ML-header">
         <h1 className="ML-title">Movies Challenge</h1>
-        <SearchBar movies={movies.map(movie => movie.title)} />
+        <SearchBar setSearchTerm={setSearchTerm} movies={movies.map(movie => movie.title)} />
       </header>
       <div className="ML-intro">
-        { movies && <MoviesList  movies={movies}/> }
+        { movies && <MoviesList searchTerm={searchTerm} movies={movies}/> }
       </div>
     </div>)
 }

@@ -3,7 +3,7 @@ import './MoviesList.css'
 
 import CardAndModal from './CardAndModal';
 
-export default function MoviesList ({ movies }){
+export default function MoviesList ({ movies, searchTerm }){
   
   const [sortingType, setSortingType] = useState('')
   const handleSortingChange = event => {
@@ -29,7 +29,13 @@ export default function MoviesList ({ movies }){
       
       <div className="items">
         {
-          movies.map((movie, index) =>
+          movies.filter((val) => {
+            if(searchTerm === '') {
+              return val
+            } else if(val.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+              return val
+            }
+          }).map((movie, index) =>
             <MovieListItem 
               key={index} 
               movie={movie} 

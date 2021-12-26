@@ -6,19 +6,15 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
 
-const SearchBar = ({movies}) => {
+const SearchBar = ({movies, setSearchTerm}) => {
 
-  const [searchTerm, setSearchTerm] = useState("")
-  
-  console.log(searchTerm)
+
 
 
   return (
     <div className="search">
       <Autocomplete
-        onSelect={(event) => {
-          setSearchTerm(event.target.value)
-        }}
+        onSelect={event => setSearchTerm(event.target.value)}
         className='searchBar'
         disablePortal
         id="combo-box-demo"
