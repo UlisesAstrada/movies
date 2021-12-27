@@ -44,3 +44,7 @@ Implement “infinite-scroll”, so more movies are added to the list as the use
 ## Conclusion
 
 After completing your assignments, please push your work to your GitHub/Bitbucket project and send us a link to your GitHub repo.
+
+### Live version!!
+
+Here you can see a live version of the project finished: https://quirky-borg-f38211.netlify.app/
