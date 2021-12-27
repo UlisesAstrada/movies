@@ -6,13 +6,24 @@ import SearchBar from './SearchBar'
 
 export default function MovieLibrary() {
   
+  const firstPages = [1]
+
+  const [newPage, setNewPage] = useState(4)
 
 
-  
+
+    async function getMoreMovies () {
+      const res = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=162c5ae054cfa42b00250c979618032e&language=en-US&page=${newPage}`)
+      let data = await res.json()
+      data = data.results.map(movie => movie)
+      setMovies([...movies, ...data])
+      setNewPage(newPage + 1)
+    } 
+ 
   useEffect(() => {
     async function fetchData() {
       return Promise.all(
-        [1, 2, 3].map((page) =>
+        firstPages.map((page) =>
           fetch(
             `https://api.themoviedb.org/3/movie/now_playing?api_key=162c5ae054cfa42b00250c979618032e&language=en-US&page=${page}`
           )
@@ -31,7 +42,6 @@ export default function MovieLibrary() {
   const [movies, setMovies] = useState([]);
 
   const [searchTerm, setSearchTerm] = useState('')
-  console.log(searchTerm)
  
 
   return(
@@ -42,6 +52,7 @@ export default function MovieLibrary() {
       </header>
       <div className="ML-intro">
         { movies && <MoviesList searchTerm={searchTerm} movies={movies}/> }
+        <button onClick={() => getMoreMovies()}>Load more movies!</button>
       </div>
     </div>)
 }
