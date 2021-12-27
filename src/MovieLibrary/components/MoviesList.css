@@ -29,3 +29,16 @@ body {
 body {
   color: white;
 }
+
+.sort {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.sort select {
+  width: 100px;
+  height: 20px;
+  margin-left: 15px;
+  border-radius: 10px;
+}

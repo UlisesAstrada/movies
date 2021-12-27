@@ -22,9 +22,9 @@ export default function MoviesList ({ movies, searchTerm }){
 
   return(
     <div className="movies-list">
-      <div>
+      <div className="sort">
         <span>Sort by:</span>
-        <SortingOptions selectedOption={sortingType} onChange={handleSortingChange}/>
+        <SortingOptions className="sorting-options" selectedOption={sortingType} onChange={handleSortingChange}/>
       </div>
       
       <div className="items">

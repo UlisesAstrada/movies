@@ -44,6 +44,10 @@
   .modal img {
     height: 50vh;
   }
+  .box {
+    overflow: scroll;
+    object-fit: contain;
+  }
 }
 
 

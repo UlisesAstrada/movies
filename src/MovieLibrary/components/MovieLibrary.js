@@ -82,7 +82,7 @@ export default function MovieLibrary() {
       </header>
       <div className="ML-intro">
         { movies && <MoviesList searchTerm={searchTerm} movies={movies}/> }
-        <div ref={targetRef}>More movies</div>
+        <div ref={targetRef} className="ref"></div>
       </div>
     </div>)
 }
